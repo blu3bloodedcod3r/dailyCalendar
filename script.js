@@ -8,14 +8,13 @@ $('#currentDay').text(dailyTimer);
 for (var i=0; i < dailyTimer; i++) {
     dailyTimer++;
     if (dailyTimer <= now) {
-         return past.classList.add('past')
-    } else (dailyTimer => now) {
-        return future.classList.add('future')
-    }
-}
-
-//moment().isBefore(dailyTimer) = $(".past")
-
+        element.addClass("past");
+        past.classList.add('past')
+    } else if (dailyTimer => now) {
+        element.addClass("future");
+        future.classList.add('future')
+    };
+    
 // want to locally save event in calendar
 const saveBtn = document.getElementById("saveBtn");
 
