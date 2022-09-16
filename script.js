@@ -4,12 +4,13 @@ const future = document.getElementsByClassName('future');
 var dailyTimer = moment().format('LLLL');
 $('#currentDay').text(dailyTimer);
 
+//want timer to automatically color code based on time of day
 for (var i=0; i < dailyTimer; i++) {
     dailyTimer++;
     if (dailyTimer <= now) {
-        return past
-    } else if (dailyTimer => now) {
-        return future
+         return past.classList.add('past')
+    } else (dailyTimer => now) {
+        return future.classList.add('future')
     }
 }
 
