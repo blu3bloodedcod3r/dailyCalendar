@@ -12,7 +12,7 @@ This daily calendar will help sort your daily work schedule by being able to see
 ## Usage
 Employee make enter events for daily planner
 
-![screenshot of daily planner showing date/timestamp](ReadME.md)
+![screenshot of daily planner showing date/timestamp](./readME%20SH.png)
 
 
 ## Credits
