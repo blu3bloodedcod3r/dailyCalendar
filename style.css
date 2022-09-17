@@ -74,3 +74,10 @@ textarea, .textArea {
   background-color: transparent;
   color: rgba(13, 16, 230, 0.808);
 }
+
+input {
+  display: flex;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+}

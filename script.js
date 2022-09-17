@@ -28,9 +28,11 @@ saveBtn.addEventListener('click', () => {
         itemToDo = [];
     }
     itemToDo.push('task')
-    localStorage.setItem("textArea", JSON.stringify(textArea));
+    localStorage.setItem("task", JSON.stringify(task));
     alert('Your new task has been added to your daily schedule.')
-    console.log(textArea)
-})
+    console.log(task)
+});
+
+
 
 
