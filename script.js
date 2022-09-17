@@ -1,27 +1,47 @@
 const past = document.getElementsByClassName('past');
 const future = document.getElementsByClassName('future');
+let task = document.getElementById('To-Do')
 
-var dailyTimer = moment().format('LLLL');
+let dailyTimer = moment().format('LLLL');
 $('#currentDay').text(dailyTimer);
 
 //want timer to automatically color code based on time of day
 for (var i=0; i < dailyTimer; i++) {
     dailyTimer++;
-    if (dailyTimer <= now) {
-        element.addClass("past");
+    document.querySelectorAll('input[text]').innerHTML = task;
+    if (task <= dailyTimer) {
+        task.addClass("past");
         past.classList.add('past')
-    } else if (dailyTimer => now) {
-        element.addClass("future");
+    } else if (task >= dailyTimer) {
+        task.addClass("future");
         future.classList.add('future')
     };
-    
+};
+
 // want to locally save event in calendar
 const saveBtn = document.getElementById("saveBtn");
 
-saveBtn.addEventListener('click', (itemToDo) => {
-
-    var itemToDo = JSON.parse(localStorage.getItem('textArea'));
-    itemToDo.push('textArea')
-    localStorage.setItem("textArea", textArea)
+saveBtn.addEventListener('click', () => {
+    document.querySelectorAll('input[text]').innerHTML = task
+    let itemToDo = JSON.parse(localStorage.getItem('task'));
+    if(task) {
+        itemToDo = [];
+    }
+    itemToDo.push('task')
+    localStorage.setItem("textArea", JSON.stringify(textArea));
+    alert('Your new task has been added to your daily schedule.')
+    console.log(task)
 })
+
+$('#calendar').mobiscroll().eventcalendar({
+    view: {
+        timeline: { 
+            type: 'day',
+            startTime: 9,
+            endTime: 17,
+            eventList: true,
+            weekNumbers: false
+       }
+    }
+});
 
