@@ -22,26 +22,15 @@ for (var i=0; i < dailyTimer; i++) {
 const saveBtn = document.getElementById("saveBtn");
 
 saveBtn.addEventListener('click', () => {
-    document.querySelectorAll('input[text]').innerHTML = task
-    let itemToDo = JSON.parse(localStorage.getItem('task'));
+    document.querySelectorAll('name[To-Do]').innerHTML = task
+    let itemToDo = JSON.parse(localStorage.getItem('name[To-Do]'));
     if(task) {
         itemToDo = [];
     }
     itemToDo.push('task')
     localStorage.setItem("textArea", JSON.stringify(textArea));
     alert('Your new task has been added to your daily schedule.')
-    console.log(task)
+    console.log(textArea)
 })
 
-$('#calendar').mobiscroll().eventcalendar({
-    view: {
-        timeline: { 
-            type: 'day',
-            startTime: 9,
-            endTime: 17,
-            eventList: true,
-            weekNumbers: false
-       }
-    }
-});
 
