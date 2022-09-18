@@ -19,29 +19,27 @@ let dailyTimer = $('#currentDay').text(moment().format('LLLL'));
 
 function eventTimer() {
 
-    var task = document.getElementById('To-Do');
     var currentTime = moment().hours();
     //console.log(currentTime)
 
     $('.time-block').each(function() {
-        let hourBlock = document.getElementById('hour')
+        let hourBlock = parseInt($(this).attr('id'));
         //console.log(hour)
         if (hourBlock < currentTime) {
-            task.addClass("past");
-            task.removeClass('present')
-            task.removeClass('future')
+            $(this).addClass("past");
+        
         } else if (hourBlock === currentTime) {
-            task.removeClass('past')
-            task.removeClass('future')
-            task.addClass('present')
+            $(this).removeClass('past')
+            $(this).addClass('present')
         } else {
-            task.removeClass('past')
-            task.removeClass('present')
-            task.addClass('future')
+            $(this).removeClass('past')
+            $(this).removeClass('present')
+            $(this).addClass('future')
         };
     });
-    eventTimer();
 };
+
+eventTimer();
 //console.log(eventTimer)
 
 //save new event to local storage
