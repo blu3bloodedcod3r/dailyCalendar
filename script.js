@@ -1,38 +1,37 @@
 const past = document.getElementsByClassName('past');
 const future = document.getElementsByClassName('future');
-let task = document.getElementById('To-Do')
+const timeBlock = document.getElementsByClassName('time-block');
 
 let dailyTimer = moment().format('LLLL');
-$('#currentDay').text(dailyTimer);
+let currentTime = $('#currentDay').text(dailyTimer);
+let newTask =document.getElementById('To-Do').value;
+console.log(newTask)
 
 //want timer to automatically color code based on time of day
-for (var i=0; i < dailyTimer; i++) {
-    dailyTimer++;
-    document.querySelectorAll('input[text]').innerHTML = task;
-    if (task <= dailyTimer) {
+
+function eventTimer (e) {
+    e.preventDefault();
+    if (currentTime <= dailyTimer) {
         task.addClass("past");
         past.classList.add('past')
-    } else if (task >= dailyTimer) {
+    } else if (currentTime >= dailyTimer) {
         task.addClass("future");
         future.classList.add('future')
     };
+    //console.log(newTask)
 };
+console.log(eventTimer)
 
-// want to locally save event in calendar
+//save new event to local storage
 const saveBtn = document.getElementById("saveBtn");
-
 saveBtn.addEventListener('click', () => {
-    document.querySelectorAll('name[To-Do]').innerHTML = task
-    let itemToDo = JSON.parse(localStorage.getItem('name[To-Do]'));
-    if(task) {
+    //document.querySelectorAll('task').innerHTML = task
+    let itemToDo = JSON.parse(localStorage.getItem('newTask'));
+    if(newTask) {
         itemToDo = [];
     }
-    itemToDo.push('task')
-    localStorage.setItem("task", JSON.stringify(task));
+    itemToDo.push('newTask')
+    localStorage.setItem("newTask", JSON.stringify(newTask));
     alert('Your new task has been added to your daily schedule.')
-    console.log(task)
+    console.log(newTask)
 });
-
-
-
-
