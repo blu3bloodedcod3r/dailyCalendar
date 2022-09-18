@@ -2,7 +2,7 @@ const past = document.getElementById('past');
 const present = document.getElementById('present');
 const future = document.getElementById('future');
 const timeBlock = document.getElementsByClassName('time-block');
-const task = document.getElementById('To-Do');
+
 
 let dailyTimer = $('#currentDay').text(moment().format('LLLL'));
 
@@ -18,7 +18,8 @@ let dailyTimer = $('#currentDay').text(moment().format('LLLL'));
 // inside loop, check to see if we've moved past time
 
 function eventTimer() {
-    
+
+    var task = document.getElementById('To-Do');
     var currentTime = moment().hours();
     //console.log(currentTime)
 
@@ -37,9 +38,8 @@ function eventTimer() {
             task.removeClass('past')
             task.removeClass('present')
             task.addClass('future')
-        }
-    })
-
+        };
+    });
     eventTimer();
 };
 //console.log(eventTimer)
