@@ -1,37 +1,57 @@
-const past = document.getElementsByClassName('past');
-const future = document.getElementsByClassName('future');
+const past = document.getElementById('past');
+const present = document.getElementById('present');
+const future = document.getElementById('future');
 const timeBlock = document.getElementsByClassName('time-block');
+const task = document.getElementById('To-Do');
 
-let dailyTimer = moment().format('LLLL');
-let currentTime = $('#currentDay').text(dailyTimer);
-let newTask =document.getElementById('To-Do').value;
-console.log(newTask)
+let dailyTimer = $('#currentDay').text(moment().format('LLLL'));
 
 //want timer to automatically color code based on time of day
 
-function eventTimer (e) {
-    e.preventDefault();
-    if (currentTime <= dailyTimer) {
-        task.addClass("past");
-        past.classList.add('past')
-    } else if (currentTime >= dailyTimer) {
-        task.addClass("future");
-        future.classList.add('future')
-    };
-    //console.log(newTask)
+// declare  function eventTimer()
+
+// get current hours
+// let currentTime = moment().hours()
+
+// loop over times
+
+// inside loop, check to see if we've moved past time
+
+function eventTimer() {
+    
+    var currentTime = moment().hours();
+    //console.log(currentTime)
+
+    $('.time-block').each(function() {
+        let hourBlock = document.getElementById('hour')
+        //console.log(hour)
+        if (hourBlock < currentTime) {
+            task.addClass("past");
+            task.removeClass('present')
+            task.removeClass('future')
+        } else if (hourBlock === currentTime) {
+            task.removeClass('past')
+            task.removeClass('future')
+            task.addClass('present')
+        } else {
+            task.removeClass('past')
+            task.removeClass('present')
+            task.addClass('future')
+        }
+    })
+
+    eventTimer();
 };
-console.log(eventTimer)
+//console.log(eventTimer)
 
 //save new event to local storage
 const saveBtn = document.getElementById("saveBtn");
 saveBtn.addEventListener('click', () => {
-    //document.querySelectorAll('task').innerHTML = task
-    let itemToDo = JSON.parse(localStorage.getItem('newTask'));
-    if(newTask) {
-        itemToDo = [];
-    }
-    itemToDo.push('newTask')
-    localStorage.setItem("newTask", JSON.stringify(newTask));
+    let newTask = document.getElementById('To-Do').value;
+    localStorage.setItem('newTask', newTask);
+
+    let taskFromStore = localStorage.getItem('newTask');
+    //console.log(taskFromStore)
     alert('Your new task has been added to your daily schedule.')
-    console.log(newTask)
 });
+
